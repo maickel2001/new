@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREE 2GK - Plateforme de Produits Numériques</title>
+    <meta name="description" content="Cartes cadeaux, codes d'abonnement, licences logicielles - Livraison instantanée">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="ri-shopping-cart-2-line text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">CREE 2GK</span>
+                </a>
+
+                <!-- Barre de recherche -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <i class="ri-search-line text-gray-400"></i>
+                        </div>
+                        <input type="text" id="searchInput" class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Rechercher des cartes cadeaux, codes, licences...">
+                    </div>
+                </div>
+
+                <!-- Navigation principale -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="cartes-gaming.html" class="text-gray-300 hover:text-white transition-colors whitespace-nowrap">Cartes Gaming</a>
+                    <a href="streaming.html" class="text-gray-300 hover:text-white transition-colors whitespace-nowrap">Streaming</a>
+                    <a href="logiciels.html" class="text-gray-300 hover:text-white transition-colors whitespace-nowrap">Logiciels</a>
+                    <a href="support.html" class="text-gray-300 hover:text-white transition-colors whitespace-nowrap">Support</a>
+                </div>
+
+                <!-- Actions utilisateur -->
+                <div class="flex items-center space-x-4 ml-6">
+                    <!-- Panier -->
+                    <a href="panier.html" class="relative p-2 text-gray-300 hover:text-white transition-colors">
+                        <i class="ri-shopping-cart-line text-xl"></i>
+                        <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </a>
+
+                    <!-- Menu utilisateur -->
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+                            <i class="ri-user-line text-xl"></i>
+                            <span class="hidden sm:block whitespace-nowrap">Mon Compte</span>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </button>
+
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
+                            <a href="connexion.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                                <i class="ri-login-box-line mr-2"></i>Connexion
+                            </a>
+                            <a href="inscription.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                                <i class="ri-user-add-line mr-2"></i>Inscription
+                            </a>
+                            <div class="border-t border-gray-700"></div>
+                            <a href="mes-commandes.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                                <i class="ri-file-list-3-line mr-2"></i>Mes Commandes
+                            </a>
+                            <a href="mes-codes.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                                <i class="ri-key-2-line mr-2"></i>Mes Codes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0">
+            <div class="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full blur-xl"></div>
+            <div class="absolute top-40 right-20 w-32 h-32 bg-purple-500/20 rounded-full blur-xl"></div>
+            <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-cyan-500/20 rounded-full blur-xl"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 py-24">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Contenu principal -->
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2">
+                            <i class="ri-flashlight-line text-blue-400"></i>
+                            <span class="text-blue-400 text-sm font-medium">Livraison Instantanée</span>
+                        </div>
+                        
+                        <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+                            <span class="text-white">Votre boutique de</span>
+                            <br>
+                            <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                produits numériques
+                            </span>
+                        </h1>
+                        
+                        <p class="text-xl text-gray-300 max-w-lg">
+                            Cartes cadeaux, codes d'abonnement, licences logicielles et bien plus. 
+                            Achetez en toute sécurité et recevez vos codes instantanément.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="cartes-prepayees.html" class="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl text-center whitespace-nowrap">
+                            <i class="ri-gift-line mr-2"></i>
+                            Découvrir les Cartes
+                        </a>
+                        
+                        <a href="logiciels.html" class="bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 hover:border-gray-500 px-8 py-4 rounded-lg font-semibold transition-all duration-200 text-center whitespace-nowrap">
+                            <i class="ri-software-line mr-2"></i>
+                            Voir les Logiciels
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-700">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">500K+</div>
+                            <div class="text-sm text-gray-400">Clients satisfaits</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">24/7</div>
+                            <div class="text-sm text-gray-400">Support client</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">100%</div>
+                            <div class="text-sm text-gray-400">Sécurisé</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image illustration -->
+                <div class="relative">
+                    <div class="relative z-10 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-2xl">
+                        <!-- Simulation d'interface -->
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-white">Commande récente</h3>
+                                <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">
+                                    <i class="ri-check-line mr-1"></i>
+                                    Livrée
+                                </span>
+                            </div>
+                            
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                                        <i class="ri-gamepad-line text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-white">Carte Steam 50€</h4>
+                                        <p class="text-sm text-gray-400">Code: XXXX-XXXX-XXXX</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                                        <i class="ri-play-circle-line text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium text-white">Netflix Premium 3 mois</h4>
+                                        <p class="text-sm text-gray-400">Accès immédiat</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decoration -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-20 blur-xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Grid -->
+    <section class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Explorez nos <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">catégories</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Des milliers de produits numériques disponibles dans toutes les catégories populaires
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="categoriesGrid">
+                <!-- Categories will be loaded here -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="catalogue.html" class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
+                    <i class="ri-apps-2-line mr-2"></i>
+                    Voir tout le catalogue
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Produits <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">populaires</span>
+                </h2>
+                <p class="text-xl text-gray-300">
+                    Les meilleures offres du moment avec livraison instantanée
+                </p>
+            </div>
+
+            <!-- Onglets -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-gray-800 rounded-xl p-1 border border-gray-700">
+                    <button class="tab-btn active" data-tab="gaming">
+                        <i class="ri-gamepad-line"></i>
+                        <span>Gaming</span>
+                    </button>
+                    <button class="tab-btn" data-tab="streaming">
+                        <i class="ri-play-circle-line"></i>
+                        <span>Streaming</span>
+                    </button>
+                    <button class="tab-btn" data-tab="software">
+                        <i class="ri-computer-line"></i>
+                        <span>Logiciels</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grille de produits -->
+            <div id="productsGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Products will be loaded here -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="catalogue.html" class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap">
+                    <i class="ri-eye-line mr-2"></i>
+                    Voir tous les produits
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-800 to-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- En-tête -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">
+                    Pourquoi choisir <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">CREE 2GK</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    La confiance de milliers de clients dans le monde entier
+                </p>
+            </div>
+
+            <!-- Statistiques -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-white mb-2">500,000+</div>
+                    <div class="text-gray-400">Clients satisfaits</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-white mb-2">2M+</div>
+                    <div class="text-gray-400">Codes vendus</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-white mb-2">4.9/5</div>
+                    <div class="text-gray-400">Note moyenne</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl lg:text-4xl font-bold text-white mb-2">99.9%</div>
+                    <div class="text-gray-400">Uptime garanti</div>
+                </div>
+            </div>
+
+            <!-- Fonctionnalités -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 text-center group hover:border-blue-500/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="ri-shield-check-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                        Paiement Sécurisé
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Vos transactions sont protégées par un cryptage SSL 256 bits et KiaPay
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 text-center group hover:border-blue-500/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="ri-flashlight-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                        Livraison Instantanée
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Recevez vos codes par email en quelques secondes après validation
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 text-center group hover:border-blue-500/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="ri-customer-service-2-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                        Support 24/7
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Notre équipe est disponible 24h/24 pour vous accompagner
+                    </p>
+                </div>
+
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 text-center group hover:border-blue-500/30 transition-all duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <i class="ri-money-dollar-circle-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                        Garantie Remboursement
+                    </h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        30 jours pour changer d'avis, remboursement intégral garanti
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid lg:grid-cols-5 gap-8">
+                <!-- Logo et description -->
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="ri-shopping-cart-2-line text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">CREE 2GK</span>
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Votre plateforme de confiance pour l'achat de produits numériques. 
+                        Cartes cadeaux, codes d'abonnement et licences logicielles avec livraison instantanée.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="ri-facebook-line text-gray-300 hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-blue-400 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="ri-twitter-line text-gray-300 hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="ri-instagram-line text-gray-300 hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="ri-youtube-line text-gray-300 hover:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Produits -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Produits</h3>
+                    <div class="space-y-3">
+                        <a href="cartes-gaming.html" class="block text-gray-400 hover:text-white transition-colors">Cartes Gaming</a>
+                        <a href="streaming.html" class="block text-gray-400 hover:text-white transition-colors">Streaming</a>
+                        <a href="logiciels.html" class="block text-gray-400 hover:text-white transition-colors">Logiciels</a>
+                        <a href="cartes-prepayees.html" class="block text-gray-400 hover:text-white transition-colors">Cartes Prépayées</a>
+                        <a href="crypto.html" class="block text-gray-400 hover:text-white transition-colors">Cryptomonnaies</a>
+                        <a href="vpn-securite.html" class="block text-gray-400 hover:text-white transition-colors">VPN & Sécurité</a>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Support</h3>
+                    <div class="space-y-3">
+                        <a href="aide.html" class="block text-gray-400 hover:text-white transition-colors">Centre d'aide</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Nous contacter</a>
+                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                        <a href="retours.html" class="block text-gray-400 hover:text-white transition-colors">Retours</a>
+                        <a href="guide-achat.html" class="block text-gray-400 hover:text-white transition-colors">Guide d'achat</a>
+                    </div>
+                </div>
+
+                <!-- Entreprise -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Entreprise</h3>
+                    <div class="space-y-3">
+                        <a href="a-propos.html" class="block text-gray-400 hover:text-white transition-colors">À propos</a>
+                        <a href="emplois.html" class="block text-gray-400 hover:text-white transition-colors">Carrières</a>
+                        <a href="presse.html" class="block text-gray-400 hover:text-white transition-colors">Espace presse</a>
+                        <a href="partenaires.html" class="block text-gray-400 hover:text-white transition-colors">Nos partenaires</a>
+                        <a href="blog.html" class="block text-gray-400 hover:text-white transition-colors">Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm">
+                    © 2024 CREE 2GK. Tous droits réservés.
+                </div>
+                <div class="flex flex-wrap gap-6 mt-4 lg:mt-0">
+                    <a href="mentions-legales.html" class="text-gray-400 hover:text-white text-sm transition-colors">Mentions légales</a>
+                    <a href="politique-confidentialite.html" class="text-gray-400 hover:text-white text-sm transition-colors">Politique de confidentialité</a>
+                    <a href="cgu.html" class="text-gray-400 hover:text-white text-sm transition-colors">CGU</a>
+                    <a href="cgv.html" class="text-gray-400 hover:text-white text-sm transition-colors">CGV</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Méthodes de paiement -->
+        <div class="border-t border-gray-800 bg-gray-950 px-4 py-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col lg:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-4 text-gray-400 text-sm">
+                        <span>Paiement sécurisé par :</span>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-gray-800 px-3 py-1 rounded text-xs font-medium">KiaPay</div>
+                            <div class="bg-gray-800 px-3 py-1 rounded text-xs font-medium">PayPal</div>
+                            <div class="bg-gray-800 px-3 py-1 rounded text-xs font-medium">Visa</div>
+                            <div class="bg-gray-800 px-3 py-1 rounded text-xs font-medium">Mastercard</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 text-gray-400 text-sm mt-4 lg:mt-0">
+                        <div class="flex items-center space-x-1">
+                            <i class="ri-shield-check-line text-green-400"></i>
+                            <span>SSL Sécurisé</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="ri-flashlight-line text-blue-400"></i>
+                            <span>Livraison instantanée</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i class="ri-customer-service-2-line text-purple-400"></i>
+                            <span>Support 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

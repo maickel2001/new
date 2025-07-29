@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartes Gaming - CREE 2GK</title>
+    <meta name="description" content="Cartes gaming Steam, PlayStation, Xbox, Nintendo - Livraison instantanée">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="ri-shopping-cart-2-line text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">CREE 2GK</span>
+                </a>
+
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <i class="ri-search-line text-gray-400"></i>
+                        </div>
+                        <input type="text" class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Rechercher des cartes gaming...">
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="cartes-gaming.html" class="text-white font-semibold">Cartes Gaming</a>
+                    <a href="streaming.html" class="text-gray-300 hover:text-white transition-colors">Streaming</a>
+                    <a href="logiciels.html" class="text-gray-300 hover:text-white transition-colors">Logiciels</a>
+                    <a href="support.html" class="text-gray-300 hover:text-white transition-colors">Support</a>
+                </div>
+
+                <div class="flex items-center space-x-4 ml-6">
+                    <a href="panier.html" class="relative p-2 text-gray-300 hover:text-white transition-colors">
+                        <i class="ri-shopping-cart-line text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </a>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+                            <i class="ri-user-line text-xl"></i>
+                            <span class="hidden sm:block">Mon Compte</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-purple-900 to-blue-900 py-20">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold text-white mb-6">
+                Cartes <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Gaming</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Rechargez vos comptes gaming favoris instantanément. Steam, PlayStation, Xbox, Nintendo et bien plus !
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Filtres -->
+            <div class="lg:w-1/4">
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 sticky top-24">
+                    <h3 class="text-xl font-bold text-white mb-6">Filtres</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-white mb-3">Plateforme</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="platform" value="Steam" class="mr-2">
+                                    <span class="text-gray-300">Steam</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="platform" value="PlayStation" class="mr-2">
+                                    <span class="text-gray-300">PlayStation</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="platform" value="Xbox" class="mr-2">
+                                    <span class="text-gray-300">Xbox</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="platform" value="Nintendo" class="mr-2">
+                                    <span class="text-gray-300">Nintendo</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="platform" value="Epic Games" class="mr-2">
+                                    <span class="text-gray-300">Epic Games</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="platform" value="Riot Games" class="mr-2">
+                                    <span class="text-gray-300">Riot Games</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold text-white mb-3">Prix</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="priceRange" value="0-20" class="mr-2">
+                                    <span class="text-gray-300">Moins de 20€</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="priceRange" value="20-50" class="mr-2">
+                                    <span class="text-gray-300">20€ - 50€</span>
+                                </label>
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="radio" name="priceRange" value="50-999" class="mr-2">
+                                    <span class="text-gray-300">Plus de 50€</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="w-full bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-colors">
+                            Effacer les filtres
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produits -->
+            <div class="lg:w-3/4">
+                <div class="flex items-center justify-between mb-8">
+                    <p class="text-gray-300">
+                        <span id="productCount">12</span> produits trouvés
+                    </p>
+                    <select class="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white">
+                        <option value="popular">Popularité</option>
+                        <option value="price-low">Prix croissant</option>
+                        <option value="price-high">Prix décroissant</option>
+                        <option value="rating">Meilleures notes</option>
+                    </select>
+                </div>
+
+                <div id="gamingProductsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="ri-shopping-cart-2-line text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">CREE 2GK</span>
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Votre plateforme de confiance pour l'achat de produits numériques. 
+                        Cartes cadeaux, codes d'abonnement et licences logicielles avec livraison instantanée.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Produits</h3>
+                    <div class="space-y-3">
+                        <a href="cartes-gaming.html" class="block text-white font-semibold">Cartes Gaming</a>
+                        <a href="streaming.html" class="block text-gray-400 hover:text-white transition-colors">Streaming</a>
+                        <a href="logiciels.html" class="block text-gray-400 hover:text-white transition-colors">Logiciels</a>
+                        <a href="cartes-prepayees.html" class="block text-gray-400 hover:text-white transition-colors">Cartes Prépayées</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Support</h3>
+                    <div class="space-y-3">
+                        <a href="aide.html" class="block text-gray-400 hover:text-white transition-colors">Centre d'aide</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Nous contacter</a>
+                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Entreprise</h3>
+                    <div class="space-y-3">
+                        <a href="a-propos.html" class="block text-gray-400 hover:text-white transition-colors">À propos</a>
+                        <a href="emplois.html" class="block text-gray-400 hover:text-white transition-colors">Carrières</a>
+                        <a href="blog.html" class="block text-gray-400 hover:text-white transition-colors">Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <div class="text-gray-400 text-sm">
+                    © 2024 CREE 2GK. Tous droits réservés.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/gaming.js"></script>
+</body>
+</html>
