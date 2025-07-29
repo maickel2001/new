@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - CREE 2GK</title>
+    <meta name="description" content="Votre panier d'achats - CREE 2GK">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="ri-shopping-cart-2-line text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">CREE 2GK</span>
+                </a>
+
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <i class="ri-search-line text-gray-400"></i>
+                        </div>
+                        <input type="text" class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Rechercher...">
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="cartes-gaming.html" class="text-gray-300 hover:text-white transition-colors">Cartes Gaming</a>
+                    <a href="streaming.html" class="text-gray-300 hover:text-white transition-colors">Streaming</a>
+                    <a href="logiciels.html" class="text-gray-300 hover:text-white transition-colors">Logiciels</a>
+                    <a href="support.html" class="text-gray-300 hover:text-white transition-colors">Support</a>
+                </div>
+
+                <div class="flex items-center space-x-4 ml-6">
+                    <a href="panier.html" class="relative p-2 text-white">
+                        <i class="ri-shopping-cart-line text-xl"></i>
+                        <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </a>
+                    <div class="relative">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+                            <i class="ri-user-line text-xl"></i>
+                            <span class="hidden sm:block">Mon Compte</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-white mb-4">Mon Panier</h1>
+            <nav class="text-sm">
+                <a href="index.html" class="text-gray-400 hover:text-white">Accueil</a>
+                <span class="text-gray-600 mx-2">/</span>
+                <span class="text-white">Panier</span>
+            </nav>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Cart Items -->
+            <div class="lg:col-span-2">
+                <div class="bg-gray-800 rounded-xl border border-gray-700 p-6">
+                    <h2 class="text-2xl font-bold text-white mb-6">Articles dans votre panier</h2>
+                    
+                    <div id="cartItems">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    
+                    <div id="emptyCart" class="text-center py-12 hidden">
+                        <i class="ri-shopping-cart-line text-6xl text-gray-600 mb-4"></i>
+                        <h3 class="text-xl font-semibold text-gray-400 mb-2">Votre panier est vide</h3>
+                        <p class="text-gray-500 mb-6">Découvrez nos produits et ajoutez-les à votre panier</p>
+                        <a href="index.html" class="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105">
+                            Continuer mes achats
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-1">
+                <div class="bg-gray-800 rounded-xl border border-gray-700 p-6 sticky top-24">
+                    <h2 class="text-2xl font-bold text-white mb-6">Résumé de la commande</h2>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Sous-total</span>
+                            <span class="text-white font-semibold" id="subtotal">€0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">TVA (20%)</span>
+                            <span class="text-white font-semibold" id="tax">€0.00</span>
+                        </div>
+                        <div class="border-t border-gray-700 pt-4">
+                            <div class="flex justify-between">
+                                <span class="text-lg font-semibold text-white">Total</span>
+                                <span class="text-lg font-bold text-white" id="total">€0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coupon Code -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Code promo</label>
+                        <div class="flex">
+                            <input type="text" id="couponCode" class="flex-1 bg-gray-700 border border-gray-600 rounded-l-lg px-3 py-2 text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Entrez votre code">
+                            <button id="applyCoupon" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-lg font-semibold transition-colors">
+                                Appliquer
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="checkoutBtn" class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-4 rounded-lg font-semibold transition-all duration-200 transform hover:scale-105 mb-4">
+                        <i class="ri-secure-payment-line mr-2"></i>
+                        Procéder au paiement
+                    </button>
+
+                    <div class="text-center">
+                        <a href="index.html" class="text-blue-400 hover:text-blue-300 text-sm">
+                            <i class="ri-arrow-left-line mr-1"></i>
+                            Continuer mes achats
+                        </a>
+                    </div>
+
+                    <!-- Security badges -->
+                    <div class="mt-6 pt-6 border-t border-gray-700">
+                        <div class="flex items-center justify-center space-x-4 text-xs text-gray-400">
+                            <div class="flex items-center">
+                                <i class="ri-shield-check-line text-green-400 mr-1"></i>
+                                <span>Paiement sécurisé</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-flashlight-line text-blue-400 mr-1"></i>
+                                <span>Livraison instantanée</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-16">
+            <div class="grid lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="ri-shopping-cart-2-line text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">CREE 2GK</span>
+                    </a>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Votre plateforme de confiance pour l'achat de produits numériques. 
+                        Cartes cadeaux, codes d'abonnement et licences logicielles avec livraison instantanée.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Produits</h3>
+                    <div class="space-y-3">
+                        <a href="cartes-gaming.html" class="block text-gray-400 hover:text-white transition-colors">Cartes Gaming</a>
+                        <a href="streaming.html" class="block text-gray-400 hover:text-white transition-colors">Streaming</a>
+                        <a href="logiciels.html" class="block text-gray-400 hover:text-white transition-colors">Logiciels</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Support</h3>
+                    <div class="space-y-3">
+                        <a href="aide.html" class="block text-gray-400 hover:text-white transition-colors">Centre d'aide</a>
+                        <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Nous contacter</a>
+                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Entreprise</h3>
+                    <div class="space-y-3">
+                        <a href="a-propos.html" class="block text-gray-400 hover:text-white transition-colors">À propos</a>
+                        <a href="emplois.html" class="block text-gray-400 hover:text-white transition-colors">Carrières</a>
+                        <a href="blog.html" class="block text-gray-400 hover:text-white transition-colors">Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <div class="text-gray-400 text-sm">
+                    © 2024 CREE 2GK. Tous droits réservés.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+</html>

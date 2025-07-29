@@ -25,7 +25,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center">
                             <i class="ri-search-line text-gray-400"></i>
                         </div>
-                        <input type="text" class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Rechercher des cartes gaming...">
+                        <input type="text" id="searchInput" class="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-400" placeholder="Rechercher des cartes gaming...">
                     </div>
                 </div>
 
@@ -39,13 +39,22 @@
                 <div class="flex items-center space-x-4 ml-6">
                     <a href="panier.html" class="relative p-2 text-gray-300 hover:text-white transition-colors">
                         <i class="ri-shopping-cart-line text-xl"></i>
-                        <span class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        <span id="cartCount" class="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
                     </a>
                     <div class="relative">
-                        <button class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
+                        <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
                             <i class="ri-user-line text-xl"></i>
                             <span class="hidden sm:block">Mon Compte</span>
+                            <i class="ri-arrow-down-s-line"></i>
                         </button>
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
+                            <a href="connexion.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                                <i class="ri-login-box-line mr-2"></i>Connexion
+                            </a>
+                            <a href="inscription.html" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors">
+                                <i class="ri-user-add-line mr-2"></i>Inscription
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,37 +84,14 @@
                     <div class="space-y-6">
                         <div>
                             <h4 class="font-semibold text-white mb-3">Plateforme</h4>
-                            <div class="space-y-2">
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="platform" value="Steam" class="mr-2">
-                                    <span class="text-gray-300">Steam</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="platform" value="PlayStation" class="mr-2">
-                                    <span class="text-gray-300">PlayStation</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="platform" value="Xbox" class="mr-2">
-                                    <span class="text-gray-300">Xbox</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="platform" value="Nintendo" class="mr-2">
-                                    <span class="text-gray-300">Nintendo</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="platform" value="Epic Games" class="mr-2">
-                                    <span class="text-gray-300">Epic Games</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer">
-                                    <input type="radio" name="platform" value="Riot Games" class="mr-2">
-                                    <span class="text-gray-300">Riot Games</span>
-                                </label>
+                            <div class="space-y-2" id="platformFilters">
+                                <!-- Filters will be loaded here -->
                             </div>
                         </div>
 
                         <div>
                             <h4 class="font-semibold text-white mb-3">Prix</h4>
-                            <div class="space-y-2">
+                            <div class="space-y-2" id="priceFilters">
                                 <label class="flex items-center cursor-pointer">
                                     <input type="radio" name="priceRange" value="0-20" class="mr-2">
                                     <span class="text-gray-300">Moins de 20€</span>
@@ -121,7 +107,7 @@
                             </div>
                         </div>
 
-                        <button class="w-full bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-colors">
+                        <button id="clearFilters" class="w-full bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-colors">
                             Effacer les filtres
                         </button>
                     </div>
@@ -132,9 +118,9 @@
             <div class="lg:w-3/4">
                 <div class="flex items-center justify-between mb-8">
                     <p class="text-gray-300">
-                        <span id="productCount">12</span> produits trouvés
+                        <span id="productCount">0</span> produits trouvés
                     </p>
-                    <select class="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white">
+                    <select id="sortSelect" class="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white">
                         <option value="popular">Popularité</option>
                         <option value="price-low">Prix croissant</option>
                         <option value="price-high">Prix décroissant</option>
@@ -144,6 +130,11 @@
 
                 <div id="gamingProductsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Products will be loaded here -->
+                </div>
+
+                <div id="loadingSpinner" class="text-center py-8 hidden">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                    <p class="text-gray-400 mt-2">Chargement...</p>
                 </div>
             </div>
         </div>

@@ -1,214 +1,42 @@
 // Gaming products page JavaScript
 
-const gamingProducts = [
-    {
-        id: 1,
-        name: 'Carte Steam 10€',
-        price: '10.00',
-        originalPrice: '10.00',
-        platform: 'Steam',
-        image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Steam+10€',
-        badge: 'POPULAIRE',
-        badgeColor: 'bg-blue-500',
-        delivery: 'Instantané',
-        rating: 4.9,
-        stock: 'En stock',
-        description: 'Ajoutez des fonds à votre portefeuille Steam'
-    },
-    {
-        id: 2,
-        name: 'Carte Steam 25€',
-        price: '25.00',
-        originalPrice: '25.00',
-        platform: 'Steam',
-        image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Steam+25€',
-        badge: 'BEST SELLER',
-        badgeColor: 'bg-purple-500',
-        delivery: 'Instantané',
-        rating: 4.9,
-        stock: 'En stock',
-        description: 'Parfait pour acheter vos jeux préférés'
-    },
-    {
-        id: 3,
-        name: 'Carte Steam 50€',
-        price: '50.00',
-        originalPrice: '52.00',
-        platform: 'Steam',
-        image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Steam+50€',
-        badge: 'PROMO',
-        badgeColor: 'bg-red-500',
-        delivery: 'Instantané',
-        rating: 4.8,
-        stock: 'En stock',
-        description: 'Économisez 2€ sur cette carte'
-    },
-    {
-        id: 4,
-        name: 'PlayStation Store 20€',
-        price: '20.00',
-        originalPrice: '20.00',
-        platform: 'PlayStation',
-        image: 'https://via.placeholder.com/300x200/003087/ffffff?text=PS+Store+20€',
-        badge: null,
-        badgeColor: '',
-        delivery: 'Instantané',
-        rating: 4.7,
-        stock: 'En stock',
-        description: 'Achetez des jeux et contenus PS4/PS5'
-    },
-    {
-        id: 5,
-        name: 'Xbox Live Gold 50€',
-        price: '50.00',
-        originalPrice: '50.00',
-        platform: 'Xbox',
-        image: 'https://via.placeholder.com/300x200/107c10/ffffff?text=Xbox+Live+50€',
-        badge: null,
-        badgeColor: '',
-        delivery: 'Instantané',
-        rating: 4.6,
-        stock: 'En stock',
-        description: 'Accédez au multijoueur Xbox'
-    },
-    {
-        id: 6,
-        name: 'Nintendo eShop 25€',
-        price: '25.00',
-        originalPrice: '25.00',
-        platform: 'Nintendo',
-        image: 'https://via.placeholder.com/300x200/e60012/ffffff?text=Nintendo+25€',
-        badge: null,
-        badgeColor: '',
-        delivery: 'Instantané',
-        rating: 4.8,
-        stock: 'En stock',
-        description: 'Jeux et contenus Nintendo Switch'
-    },
-    {
-        id: 7,
-        name: 'Riot Points 1380 RP',
-        price: '10.00',
-        originalPrice: '10.00',
-        platform: 'Riot Games',
-        image: 'https://via.placeholder.com/300x200/c89b3c/ffffff?text=Riot+Points+1380',
-        badge: 'NOUVEAU',
-        badgeColor: 'bg-green-500',
-        delivery: 'Instantané',
-        rating: 4.9,
-        stock: 'En stock',
-        description: 'Monnaie virtuelle League of Legends'
-    },
-    {
-        id: 8,
-        name: 'Epic Games Store 25€',
-        price: '25.00',
-        originalPrice: '25.00',
-        platform: 'Epic Games',
-        image: 'https://via.placeholder.com/300x200/313131/ffffff?text=Epic+Games+25€',
-        badge: null,
-        badgeColor: '',
-        delivery: 'Instantané',
-        rating: 4.5,
-        stock: 'En stock',
-        description: 'Jeux exclusifs Epic Games Store'
-    },
-    {
-        id: 9,
-        name: 'Fortnite V-Bucks 2800',
-        price: '19.99',
-        originalPrice: '19.99',
-        platform: 'Fortnite',
-        image: 'https://via.placeholder.com/300x200/0078f2/ffffff?text=V-Bucks+2800',
-        badge: 'POPULAIRE',
-        badgeColor: 'bg-blue-500',
-        delivery: 'Instantané',
-        rating: 4.8,
-        stock: 'En stock',
-        description: 'Monnaie virtuelle Fortnite'
-    },
-    {
-        id: 10,
-        name: 'Minecraft Java Edition',
-        price: '23.95',
-        originalPrice: '26.95',
-        platform: 'Minecraft',
-        image: 'https://via.placeholder.com/300x200/62b47a/ffffff?text=Minecraft+Java',
-        badge: 'PROMO',
-        badgeColor: 'bg-red-500',
-        delivery: 'Instantané',
-        rating: 4.9,
-        stock: 'En stock',
-        description: 'Version complète Minecraft Java'
-    },
-    {
-        id: 11,
-        name: 'Roblox 800 Robux',
-        price: '9.99',
-        originalPrice: '9.99',
-        platform: 'Roblox',
-        image: 'https://via.placeholder.com/300x200/00a2ff/ffffff?text=Roblox+800',
-        badge: null,
-        badgeColor: '',
-        delivery: 'Instantané',
-        rating: 4.7,
-        stock: 'En stock',
-        description: 'Monnaie virtuelle Roblox'
-    },
-    {
-        id: 12,
-        name: 'Apex Legends 2150 Coins',
-        price: '19.99',
-        originalPrice: '19.99',
-        platform: 'Apex Legends',
-        image: 'https://via.placeholder.com/300x200/ff6600/ffffff?text=Apex+2150',
-        badge: null,
-        badgeColor: '',
-        delivery: 'Instantané',
-        rating: 4.6,
-        stock: 'En stock',
-        description: 'Monnaie virtuelle Apex Legends'
-    }
-];
-
 let currentFilters = {
     platform: '',
     priceRange: '',
     sortBy: 'popular'
 };
 
-let favorites = [];
+let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+let allProducts = [];
 
 // Initialize gaming page
 document.addEventListener('DOMContentLoaded', function() {
     initializeGamingPage();
     setupFilterListeners();
+    loadGamingProducts();
 });
 
 function initializeGamingPage() {
-    loadGamingProducts();
-    updateProductCount();
+    // Load stored data
+    const storedCart = localStorage.getItem('cartItems');
+    if (storedCart) {
+        window.CREE2GK.cartItems = JSON.parse(storedCart);
+        updateCartCount();
+    }
 }
 
 function setupFilterListeners() {
-    // Platform filters
-    document.querySelectorAll('input[name="platform"]').forEach(input => {
-        input.addEventListener('change', function() {
-            currentFilters.platform = this.checked ? this.value : '';
-            filterAndDisplayProducts();
-        });
-    });
-
-    // Price range filters
-    document.querySelectorAll('input[name="priceRange"]').forEach(input => {
-        input.addEventListener('change', function() {
-            currentFilters.priceRange = this.checked ? this.value : '';
-            filterAndDisplayProducts();
-        });
-    });
+    // Search input
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce(function() {
+            const query = this.value.toLowerCase();
+            filterProducts(query);
+        }, 300));
+    }
 
     // Sort dropdown
-    const sortSelect = document.querySelector('select');
+    const sortSelect = document.getElementById('sortSelect');
     if (sortSelect) {
         sortSelect.addEventListener('change', function() {
             currentFilters.sortBy = this.value;
@@ -217,41 +45,201 @@ function setupFilterListeners() {
     }
 
     // Clear filters button
-    const clearFiltersBtn = document.querySelector('.bg-gray-700');
+    const clearFiltersBtn = document.getElementById('clearFilters');
     if (clearFiltersBtn) {
         clearFiltersBtn.addEventListener('click', function() {
             clearAllFilters();
         });
     }
+
+    // Price range filters
+    document.addEventListener('change', function(e) {
+        if (e.target.name === 'priceRange') {
+            currentFilters.priceRange = e.target.checked ? e.target.value : '';
+            filterAndDisplayProducts();
+        }
+        if (e.target.name === 'platform') {
+            currentFilters.platform = e.target.checked ? e.target.value : '';
+            filterAndDisplayProducts();
+        }
+    });
+}
+
+async function loadGamingProducts() {
+    showLoading(true);
+    
+    try {
+        const response = await fetch('api/products.php?category=cartes-gaming');
+        const result = await response.json();
+        
+        if (result.success) {
+            allProducts = result.data;
+            setupPlatformFilters();
+            filterAndDisplayProducts();
+        } else {
+            showError('Erreur lors du chargement des produits');
+        }
+    } catch (error) {
+        console.error('Error loading products:', error);
+        // Fallback to static data
+        loadStaticGamingProducts();
+    } finally {
+        showLoading(false);
+    }
+}
+
+function loadStaticGamingProducts() {
+    // Fallback static data
+    allProducts = [
+        {
+            id: 1,
+            name: 'Carte Steam 10€',
+            price: 10.00,
+            original_price: 10.00,
+            platform: 'Steam',
+            image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Steam+10€',
+            badge: 'POPULAIRE',
+            badge_color: 'bg-blue-500',
+            delivery_time: 'Instantané',
+            rating: 4.9,
+            stock_status: 'in_stock',
+            description: 'Ajoutez des fonds à votre portefeuille Steam',
+            features: ['Livraison instantanée', 'Code officiel Steam', 'Valable dans le monde entier']
+        },
+        {
+            id: 2,
+            name: 'Carte Steam 25€',
+            price: 25.00,
+            original_price: 25.00,
+            platform: 'Steam',
+            image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Steam+25€',
+            badge: 'BEST SELLER',
+            badge_color: 'bg-purple-500',
+            delivery_time: 'Instantané',
+            rating: 4.9,
+            stock_status: 'in_stock',
+            description: 'Parfait pour acheter vos jeux préférés',
+            features: ['Livraison instantanée', 'Code officiel Steam', 'Valable dans le monde entier']
+        },
+        {
+            id: 3,
+            name: 'Carte Steam 50€',
+            price: 50.00,
+            original_price: 52.00,
+            platform: 'Steam',
+            image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Steam+50€',
+            badge: 'PROMO',
+            badge_color: 'bg-red-500',
+            delivery_time: 'Instantané',
+            rating: 4.8,
+            stock_status: 'in_stock',
+            description: 'Économisez 2€ sur cette carte',
+            features: ['Livraison instantanée', 'Code officiel Steam', 'Valable dans le monde entier']
+        },
+        {
+            id: 4,
+            name: 'PlayStation Store 20€',
+            price: 20.00,
+            original_price: 20.00,
+            platform: 'PlayStation',
+            image: 'https://via.placeholder.com/300x200/003087/ffffff?text=PS+Store+20€',
+            badge: null,
+            badge_color: '',
+            delivery_time: 'Instantané',
+            rating: 4.7,
+            stock_status: 'in_stock',
+            description: 'Achetez des jeux et contenus PS4/PS5',
+            features: ['Compatible PS4/PS5', 'Jeux et DLC', 'Contenu exclusif']
+        },
+        {
+            id: 5,
+            name: 'Xbox Live Gold 50€',
+            price: 50.00,
+            original_price: 50.00,
+            platform: 'Xbox',
+            image: 'https://via.placeholder.com/300x200/107c10/ffffff?text=Xbox+Live+50€',
+            badge: null,
+            badge_color: '',
+            delivery_time: 'Instantané',
+            rating: 4.6,
+            stock_status: 'in_stock',
+            description: 'Accédez au multijoueur Xbox',
+            features: ['Multijoueur en ligne', 'Jeux gratuits', 'Remises exclusives']
+        },
+        {
+            id: 6,
+            name: 'Nintendo eShop 25€',
+            price: 25.00,
+            original_price: 25.00,
+            platform: 'Nintendo',
+            image: 'https://via.placeholder.com/300x200/e60012/ffffff?text=Nintendo+25€',
+            badge: null,
+            badge_color: '',
+            delivery_time: 'Instantané',
+            rating: 4.8,
+            stock_status: 'in_stock',
+            description: 'Jeux et contenus Nintendo Switch',
+            features: ['Nintendo Switch', 'Jeux exclusifs', 'DLC et contenus']
+        }
+    ];
+    
+    setupPlatformFilters();
+    filterAndDisplayProducts();
+}
+
+function setupPlatformFilters() {
+    const platformFilters = document.getElementById('platformFilters');
+    if (!platformFilters) return;
+    
+    // Get unique platforms
+    const platforms = [...new Set(allProducts.map(p => p.platform))];
+    
+    const filtersHTML = platforms.map(platform => `
+        <label class="flex items-center cursor-pointer">
+            <input type="radio" name="platform" value="${platform}" class="mr-2">
+            <span class="text-gray-300">${platform}</span>
+        </label>
+    `).join('');
+    
+    platformFilters.innerHTML = filtersHTML;
+}
+
+function filterProducts(searchQuery = '') {
+    let filtered = allProducts;
+    
+    // Search filter
+    if (searchQuery) {
+        filtered = filtered.filter(product => 
+            product.name.toLowerCase().includes(searchQuery) ||
+            product.description.toLowerCase().includes(searchQuery)
+        );
+    }
+    
+    // Platform filter
+    if (currentFilters.platform) {
+        filtered = filtered.filter(product => product.platform === currentFilters.platform);
+    }
+    
+    // Price range filter
+    if (currentFilters.priceRange) {
+        const [min, max] = currentFilters.priceRange.split('-').map(Number);
+        filtered = filtered.filter(product => {
+            const price = product.price;
+            if (max === 999) {
+                return price >= min;
+            }
+            return price >= min && price <= max;
+        });
+    }
+    
+    return filtered;
 }
 
 function filterAndDisplayProducts() {
-    const filteredProducts = applyFilters(gamingProducts);
-    const sortedProducts = sortProducts(filteredProducts);
-    displayProducts(sortedProducts);
-    updateProductCount(sortedProducts.length);
-}
-
-function applyFilters(products) {
-    return products.filter(product => {
-        // Platform filter
-        if (currentFilters.platform && product.platform !== currentFilters.platform) {
-            return false;
-        }
-
-        // Price range filter
-        if (currentFilters.priceRange) {
-            const [min, max] = currentFilters.priceRange.split('-').map(Number);
-            const price = parseFloat(product.price);
-            if (max === 999) {
-                if (price < min) return false;
-            } else {
-                if (price < min || price > max) return false;
-            }
-        }
-
-        return true;
-    });
+    const filtered = filterProducts();
+    const sorted = sortProducts(filtered);
+    displayProducts(sorted);
+    updateProductCount(sorted.length);
 }
 
 function sortProducts(products) {
@@ -259,9 +247,9 @@ function sortProducts(products) {
     
     switch (currentFilters.sortBy) {
         case 'price-low':
-            return sorted.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+            return sorted.sort((a, b) => a.price - b.price);
         case 'price-high':
-            return sorted.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+            return sorted.sort((a, b) => b.price - a.price);
         case 'rating':
             return sorted.sort((a, b) => b.rating - a.rating);
         case 'popular':
@@ -270,26 +258,33 @@ function sortProducts(products) {
     }
 }
 
-function loadGamingProducts() {
-    displayProducts(gamingProducts);
-}
-
 function displayProducts(products) {
     const grid = document.getElementById('gamingProductsGrid');
     if (!grid) return;
+
+    if (products.length === 0) {
+        grid.innerHTML = `
+            <div class="col-span-full text-center py-12">
+                <i class="ri-search-line text-6xl text-gray-600 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-400 mb-2">Aucun produit trouvé</h3>
+                <p class="text-gray-500">Essayez de modifier vos filtres de recherche</p>
+            </div>
+        `;
+        return;
+    }
 
     const productsHTML = products.map(product => `
         <div class="bg-gray-800 rounded-xl border border-gray-700 hover:border-gray-600 transition-all duration-300 group hover:-translate-y-2 hover:shadow-2xl">
             <div class="relative">
                 <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded-t-xl">
                 ${product.badge ? `
-                    <span class="absolute top-3 left-3 ${product.badgeColor} text-white px-3 py-1 rounded-full text-sm font-bold">
+                    <span class="absolute top-3 left-3 ${product.badge_color} text-white px-3 py-1 rounded-full text-sm font-bold">
                         ${product.badge}
                     </span>
                 ` : ''}
                 <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs flex items-center">
                     <i class="ri-flashlight-line mr-1"></i>
-                    ${product.delivery}
+                    ${product.delivery_time}
                 </div>
                 <button onclick="toggleGamingFavorite(${product.id})" class="absolute top-12 right-3 p-2 bg-black/50 rounded-full hover:bg-black/70 transition-colors">
                     <i class="${favorites.includes(product.id) ? 'ri-heart-fill text-red-500' : 'ri-heart-line text-white'}"></i>
@@ -304,9 +299,9 @@ function displayProducts(products) {
                 
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center space-x-2">
-                        <span class="text-2xl font-bold text-white">€${product.price}</span>
-                        ${product.originalPrice !== product.price ? `
-                            <span class="text-sm text-gray-400 line-through">€${product.originalPrice}</span>
+                        <span class="text-2xl font-bold text-white">€${product.price.toFixed(2)}</span>
+                        ${product.original_price && product.original_price !== product.price ? `
+                            <span class="text-sm text-gray-400 line-through">€${product.original_price.toFixed(2)}</span>
                         ` : ''}
                     </div>
                     <div class="flex items-center space-x-1">
@@ -316,8 +311,8 @@ function displayProducts(products) {
                 </div>
 
                 <div class="flex items-center justify-between mb-4">
-                    <span class="text-sm bg-green-500/20 text-green-400 px-3 py-1 rounded-full">
-                        ${product.stock}
+                    <span class="text-sm ${getStockStatusClass(product.stock_status)} px-3 py-1 rounded-full">
+                        ${getStockStatusText(product.stock_status)}
                     </span>
                     <span class="text-sm text-blue-400">
                         ${product.platform}
@@ -345,11 +340,39 @@ function toggleGamingFavorite(productId) {
         window.CREE2GK.showNotification('Ajouté aux favoris !', 'success');
     }
     
-    // Update the display
-    filterAndDisplayProducts();
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    filterAndDisplayProducts(); // Refresh display to update heart icons
 }
 
-function updateProductCount(count = gamingProducts.length) {
+function addToCart(productId) {
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) return;
+    
+    // Check if product already in cart
+    const existingItem = window.CREE2GK.cartItems.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        window.CREE2GK.cartItems.push({
+            ...product,
+            quantity: 1
+        });
+    }
+    
+    localStorage.setItem('cartItems', JSON.stringify(window.CREE2GK.cartItems));
+    updateCartCount();
+    window.CREE2GK.showNotification('Produit ajouté au panier !', 'success');
+}
+
+function updateCartCount() {
+    const cartCount = document.getElementById('cartCount');
+    if (cartCount) {
+        const totalItems = window.CREE2GK.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
+}
+
+function updateProductCount(count) {
     const countElement = document.getElementById('productCount');
     if (countElement) {
         countElement.textContent = count;
@@ -370,14 +393,84 @@ function clearAllFilters() {
     };
 
     // Reset sort dropdown
-    const sortSelect = document.querySelector('select');
+    const sortSelect = document.getElementById('sortSelect');
     if (sortSelect) {
         sortSelect.value = 'popular';
     }
 
+    // Clear search
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.value = '';
+    }
+
     // Reload all products
-    loadGamingProducts();
-    updateProductCount();
-    
+    filterAndDisplayProducts();
     window.CREE2GK.showNotification('Filtres effacés', 'info');
+}
+
+function showLoading(show) {
+    const spinner = document.getElementById('loadingSpinner');
+    const grid = document.getElementById('gamingProductsGrid');
+    
+    if (spinner && grid) {
+        if (show) {
+            spinner.classList.remove('hidden');
+            grid.classList.add('hidden');
+        } else {
+            spinner.classList.add('hidden');
+            grid.classList.remove('hidden');
+        }
+    }
+}
+
+function showError(message) {
+    const grid = document.getElementById('gamingProductsGrid');
+    if (grid) {
+        grid.innerHTML = `
+            <div class="col-span-full text-center py-12">
+                <i class="ri-error-warning-line text-6xl text-red-500 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-400 mb-2">Erreur</h3>
+                <p class="text-gray-500">${message}</p>
+            </div>
+        `;
+    }
+}
+
+function getStockStatusClass(status) {
+    switch (status) {
+        case 'in_stock':
+            return 'bg-green-500/20 text-green-400';
+        case 'limited':
+            return 'bg-orange-500/20 text-orange-400';
+        case 'out_of_stock':
+            return 'bg-red-500/20 text-red-400';
+        default:
+            return 'bg-gray-500/20 text-gray-400';
+    }
+}
+
+function getStockStatusText(status) {
+    switch (status) {
+        case 'in_stock':
+            return 'En stock';
+        case 'limited':
+            return 'Stock limité';
+        case 'out_of_stock':
+            return 'Rupture de stock';
+        default:
+            return 'Indisponible';
+    }
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }

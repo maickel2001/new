@@ -215,12 +215,15 @@ const products = {
 
 // Current active tab
 let activeTab = 'gaming';
+let cartItems = [];
+let favorites = [];
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
     initializeEventListeners();
     loadCategories();
     loadProducts(activeTab);
+    updateCartCount();
 });
 
 // Event listeners
@@ -246,8 +249,7 @@ function initializeEventListeners() {
     if (searchInput) {
         searchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase();
-            // Implement search functionality here
-            console.log('Searching for:', query);
+            performSearch(query);
         });
 
         searchInput.addEventListener('focus', function() {
@@ -383,26 +385,47 @@ function addToCart(productId) {
     }
 
     if (product) {
-        // Add to cart logic here
-        console.log('Adding to cart:', product);
-        
-        // Update cart count
-        const cartCount = document.getElementById('cartCount');
-        if (cartCount) {
-            const currentCount = parseInt(cartCount.textContent) || 0;
-            cartCount.textContent = currentCount + 1;
+        // Check if product already in cart
+        const existingItem = cartItems.find(item => item.id === productId);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cartItems.push({
+                ...product,
+                quantity: 1
+            });
         }
 
-        // Show success message
+        updateCartCount();
         showNotification('Produit ajouté au panier !', 'success');
+        
+        // Save to localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }
 }
 
 // Favorites functionality
 function toggleFavorite(productId) {
-    // Toggle favorite logic here
-    console.log('Toggling favorite for product:', productId);
-    showNotification('Ajouté aux favoris !', 'info');
+    const index = favorites.indexOf(productId);
+    if (index > -1) {
+        favorites.splice(index, 1);
+        showNotification('Retiré des favoris', 'info');
+    } else {
+        favorites.push(productId);
+        showNotification('Ajouté aux favoris !', 'success');
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+
+// Update cart count
+function updateCartCount() {
+    const cartCount = document.getElementById('cartCount');
+    if (cartCount) {
+        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
 }
 
 // Notification system
@@ -442,14 +465,107 @@ function showNotification(message, type = 'info') {
     setTimeout(() => {
         notification.classList.add('translate-x-full');
         setTimeout(() => {
-            document.body.removeChild(notification);
+            if (document.body.contains(notification)) {
+                document.body.removeChild(notification);
+            }
         }, 300);
     }, 3000);
 }
 
+// Search functionality
+function performSearch(query) {
+    if (!query) {
+        loadProducts(activeTab);
+        return;
+    }
+
+    // Simple search implementation
+    const allProducts = Object.values(products).flat();
+    const results = allProducts.filter(product => 
+        product.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    if (results.length > 0) {
+        displaySearchResults(results);
+    } else {
+        showNotification('Aucun produit trouvé', 'warning');
+        loadProducts(activeTab);
+    }
+}
+
+// Display search results
+function displaySearchResults(results) {
+    if (!productsGrid) return;
+
+    const resultsHTML = results.map(product => `
+        <div class="bg-gray-800 rounded-xl border border-gray-700 hover:border-gray-600 transition-all duration-300 group hover:-translate-y-2 hover:shadow-2xl">
+            <div class="relative">
+                <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded-t-xl">
+                ${product.badge ? `
+                    <span class="absolute top-3 left-3 ${product.badgeColor} text-white px-2 py-1 rounded-full text-xs font-bold">
+                        ${product.badge}
+                    </span>
+                ` : ''}
+                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs flex items-center">
+                    <i class="ri-flashlight-line mr-1"></i>
+                    ${product.delivery}
+                </div>
+            </div>
+
+            <div class="p-6">
+                <h3 class="font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                    ${product.name}
+                </h3>
+                
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-2xl font-bold text-white">€${product.price}</span>
+                        ${product.originalPrice !== product.price ? `
+                            <span class="text-sm text-gray-400 line-through">€${product.originalPrice}</span>
+                        ` : ''}
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <i class="ri-star-fill text-yellow-500 text-sm"></i>
+                        <span class="text-sm text-gray-300">${product.rating}</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <button class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white py-3 rounded-lg font-semibold transition-all duration-200 transform group-hover:scale-105 whitespace-nowrap" onclick="addToCart(${product.id})">
+                        <i class="ri-shopping-cart-line mr-2"></i>
+                        Acheter maintenant
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    productsGrid.innerHTML = resultsHTML;
+}
+
+// Load data from localStorage on page load
+function loadStoredData() {
+    const storedCart = localStorage.getItem('cartItems');
+    const storedFavorites = localStorage.getItem('favorites');
+    
+    if (storedCart) {
+        cartItems = JSON.parse(storedCart);
+        updateCartCount();
+    }
+    
+    if (storedFavorites) {
+        favorites = JSON.parse(storedFavorites);
+    }
+}
+
+// Initialize stored data
+document.addEventListener('DOMContentLoaded', function() {
+    loadStoredData();
+});
+
 // Smooth scrolling for anchor links
 document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
+    if (e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
         e.preventDefault();
         const target = document.querySelector(e.target.getAttribute('href'));
         if (target) {
@@ -460,40 +576,6 @@ document.addEventListener('click', function(e) {
         }
     }
 });
-
-// Lazy loading for images
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// Initialize lazy loading
-document.addEventListener('DOMContentLoaded', lazyLoadImages);
-
-// Search functionality
-function performSearch(query) {
-    if (!query) return;
-
-    // Simple search implementation
-    const allProducts = Object.values(products).flat();
-    const results = allProducts.filter(product => 
-        product.name.toLowerCase().includes(query.toLowerCase())
-    );
-
-    console.log('Search results:', results);
-    // Implement search results display
-}
 
 // Utility functions
 function formatPrice(price) {
@@ -521,5 +603,7 @@ window.CREE2GK = {
     toggleFavorite,
     showNotification,
     performSearch,
-    formatPrice
+    formatPrice,
+    cartItems,
+    favorites
 };
