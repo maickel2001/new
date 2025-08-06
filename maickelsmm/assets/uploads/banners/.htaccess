@@ -1,0 +1,15 @@
+# Protection du dossier banners
+# Interdire l'exécution de scripts PHP
+<Files ~ "\.php$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Autoriser seulement les images
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Interdire l'affichage du contenu du dossier
+Options -Indexes

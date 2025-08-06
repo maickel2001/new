@@ -1,0 +1,30 @@
+# MaickelSMM - Configuration Apache SIMPLIFIÉE POUR TEST
+# Renommez ce fichier en .htaccess pour l'utiliser
+
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Page d'accueil par défaut
+DirectoryIndex index.php
+
+# URLs propres pour les commandes (optionnel)
+RewriteRule ^order/([0-9]+)/?$ order.php?id=$1 [L,QSA]
+
+# Protection basique des fichiers SQL
+<Files ~ "\.sql$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Protection du dossier uploads
+<Directory "assets/uploads">
+    <Files ~ "\.php$">
+        Order allow,deny
+        Deny from all
+    </Files>
+    
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|pdf)$">
+        Order allow,deny
+        Allow from all
+    </FilesMatch>
+</Directory>
