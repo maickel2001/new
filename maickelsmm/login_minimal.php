@@ -44,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = 'Veuillez remplir tous les champs';
     } else {
         try {
-            $stmt = $conn->prepare("SELECT * FROM users WHERE (email = ? OR username = ?) AND status = 'active'");
-            $stmt->execute([$login, $login]);
+            $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND status = 'active'");
+            $stmt->execute([$login]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($user && password_verify($password, $user['password'])) {
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo '<script>setTimeout(() => window.location.href = "dashboard_minimal.php", 1500);</script>';
                 }
             } else {
-                $error = 'Email/mot de passe incorrect';
+                $error = 'Email ou mot de passe incorrect';
             }
         } catch(PDOException $e) {
             $error = 'Erreur: ' . $e->getMessage();
@@ -174,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php endif; ?>
         
         <form method="POST">
-            <input type="text" name="login" placeholder="Email ou nom d'utilisateur" 
+            <input type="email" name="login" placeholder="Email" 
                    value="<?= htmlspecialchars($_POST['login'] ?? '') ?>" required>
             <input type="password" name="password" placeholder="Mot de passe" required>
             <button type="submit">Se connecter</button>

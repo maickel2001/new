@@ -36,8 +36,8 @@ if ($_POST && !$isAdmin) {
     $password = $_POST['password'] ?? '';
     
     if ($login && $password) {
-        $stmt = $conn->prepare("SELECT * FROM users WHERE (email = ? OR username = ?) AND role IN ('admin', 'superadmin')");
-        $stmt->execute([$login, $login]);
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND role IN ('admin', 'superadmin')");
+        $stmt->execute([$login]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if ($user && password_verify($password, $user['password'])) {
@@ -221,7 +221,7 @@ if ($isAdmin) {
             <div class="card">
                 <h2>Connexion Administrateur</h2>
                 <form method="POST">
-                    <input type="text" name="login" placeholder="Email ou nom d'utilisateur admin" required>
+                    <input type="email" name="login" placeholder="Email admin" required>
                     <input type="password" name="password" placeholder="Mot de passe admin" required>
                     <button type="submit">Se connecter</button>
                 </form>
