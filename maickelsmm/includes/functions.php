@@ -92,7 +92,7 @@ function updateSetting($key, $value, $type = 'text') {
  */
 function getCategories($active_only = true) {
     $db = Database::getInstance();
-    $where = $active_only ? "WHERE status = 'active'" : "";
+    $where = $active_only ? "WHERE is_active = 1" : "";
     return $db->fetchAll("SELECT * FROM categories $where ORDER BY sort_order ASC, name ASC");
 }
 
@@ -125,7 +125,7 @@ function getServicesByCategory($category_id, $active_only = true) {
  */
 function getAllServices($active_only = true) {
     $db = Database::getInstance();
-    $where = $active_only ? "WHERE s.status = 'active'" : "";
+    $where = $active_only ? "WHERE s.status = 'active' AND c.is_active = 1" : "";
     
     return $db->fetchAll("
         SELECT s.*, c.name as category_name, c.icon as category_icon
