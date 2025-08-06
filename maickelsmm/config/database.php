@@ -6,11 +6,12 @@
  * @version 1.0
  */
 
-// Configuration de la base de données
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'maickelsmm');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+// Configuration de la base de données - Modifiez ces valeurs selon votre hébergeur
+// Pour Hostinger, utilisez les informations de votre panneau de contrôle
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'maickelsmm');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Classe de connexion à la base de données
@@ -50,13 +51,23 @@ class Database {
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES {$this->charset}"
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES {$this->charset}",
+                PDO::ATTR_PERSISTENT => false,
+                PDO::ATTR_TIMEOUT => 30
             ];
             
             $this->connection = new PDO($dsn, $this->username, $this->password, $options);
+            
         } catch (PDOException $e) {
+            // Log l'erreur sans exposer les détails sensibles
             error_log("Erreur de connexion à la base de données: " . $e->getMessage());
-            die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+            
+            // En production, afficher une erreur générique
+            if (getenv('ENVIRONMENT') !== 'development') {
+                die("Erreur de connexion à la base de données. Veuillez contacter l'administrateur.");
+            } else {
+                die("Erreur de connexion à la base de données: " . $e->getMessage());
+            }
         }
     }
 
@@ -68,14 +79,7 @@ class Database {
     }
 
     /**
-     * Préparer une requête
-     */
-    public function prepare($query) {
-        return $this->connection->prepare($query);
-    }
-
-    /**
-     * Exécuter une requête avec des paramètres
+     * Exécuter une requête préparée
      */
     public function execute($query, $params = []) {
         try {
@@ -89,7 +93,7 @@ class Database {
     }
 
     /**
-     * Obtenir un seul résultat
+     * Récupérer une seule ligne
      */
     public function fetchOne($query, $params = []) {
         $stmt = $this->execute($query, $params);
@@ -97,7 +101,7 @@ class Database {
     }
 
     /**
-     * Obtenir tous les résultats
+     * Récupérer toutes les lignes
      */
     public function fetchAll($query, $params = []) {
         $stmt = $this->execute($query, $params);
@@ -105,14 +109,22 @@ class Database {
     }
 
     /**
-     * Obtenir le dernier ID inséré
+     * Récupérer le dernier ID inséré
      */
     public function lastInsertId() {
         return $this->connection->lastInsertId();
     }
 
     /**
-     * Commencer une transaction
+     * Compter le nombre de lignes affectées
+     */
+    public function rowCount($query, $params = []) {
+        $stmt = $this->execute($query, $params);
+        return $stmt->rowCount();
+    }
+
+    /**
+     * Démarrer une transaction
      */
     public function beginTransaction() {
         return $this->connection->beginTransaction();
@@ -133,21 +145,41 @@ class Database {
     }
 
     /**
-     * Empêcher la clonage de l'instance
+     * Vérifier si une transaction est active
      */
-    private function __clone() {}
+    public function inTransaction() {
+        return $this->connection->inTransaction();
+    }
 
     /**
-     * Empêcher la désérialisation de l'instance
+     * Échapper une chaîne pour éviter les injections SQL (utiliser de préférence les requêtes préparées)
      */
-    private function __wakeup() {}
+    public function quote($string) {
+        return $this->connection->quote($string);
+    }
+
+    /**
+     * Tester la connexion
+     */
+    public function testConnection() {
+        try {
+            $this->connection->query('SELECT 1');
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }
 
-// Test de connexion
-try {
-    $db = Database::getInstance();
-    // echo "Connexion à la base de données réussie!";
-} catch (Exception $e) {
-    error_log("Erreur de connexion: " . $e->getMessage());
+// Tester la connexion au chargement (seulement en développement)
+if (getenv('ENVIRONMENT') === 'development') {
+    try {
+        $db = Database::getInstance();
+        if (!$db->testConnection()) {
+            error_log("Test de connexion à la base de données échoué");
+        }
+    } catch (Exception $e) {
+        error_log("Erreur lors du test de connexion: " . $e->getMessage());
+    }
 }
 ?>
