@@ -1,0 +1,17 @@
+# MaickelSMM - Configuration Apache SIMPLIFIÉE POUR TEST
+# Si cette version fonctionne, nous pouvons ajouter les règles progressivement
+
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Page d'accueil par défaut
+DirectoryIndex index.php
+
+# URLs propres pour les commandes (optionnel)
+RewriteRule ^order/([0-9]+)/?$ order.php?id=$1 [L,QSA]
+
+# Protection basique
+<Files ~ "\.sql$">
+    Order allow,deny
+    Deny from all
+</Files>
