@@ -1,0 +1,12 @@
+# MaickelSMM - Configuration Apache ULTRA-MINIMALE
+# Renommez ce fichier en .htaccess pour l'utiliser
+# Version de test pour identifier les problèmes
+
+# Page d'accueil par défaut
+DirectoryIndex index.php
+
+# Protection basique
+<Files ~ "\.sql$">
+    Order allow,deny
+    Deny from all
+</Files>
