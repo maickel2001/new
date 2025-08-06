@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Configuration DB
+// Configuration DB - MODIFIEZ LE MOT DE PASSE
 $DB_HOST = 'localhost';
 $DB_NAME = 'u634930929_Ino';
 $DB_USER = 'u634930929_Ino';
-$DB_PASS = '';
+$DB_PASS = 'VotreMotDePasse'; // ⚠️ REMPLACEZ par votre mot de passe DB
 
 try {
     $conn = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PASS);

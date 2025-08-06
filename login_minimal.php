@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 $DB_HOST = 'localhost';
 $DB_NAME = 'u634930929_Ino';
 $DB_USER = 'u634930929_Ino';
-$DB_PASS = '';
+$DB_PASS = 'VotreMotDePasse'; // ⚠️ REMPLACEZ par votre mot de passe DB
 
 $error = '';
 $success = '';

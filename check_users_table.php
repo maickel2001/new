@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Configuration DB
+// Configuration DB - MODIFIEZ LE MOT DE PASSE
 $DB_HOST = 'localhost';
 $DB_NAME = 'u634930929_Ino';
 $DB_USER = 'u634930929_Ino';
-$DB_PASS = '';
+$DB_PASS = 'VotreMotDePasse'; // ⚠️ REMPLACEZ par votre mot de passe DB
 
 echo "<h1>🔍 Diagnostic Table Users</h1>";
 
